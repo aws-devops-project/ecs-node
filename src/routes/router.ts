@@ -2,7 +2,7 @@ import { Router } from "express";
 
 const router = Router();
 
-router.get("/", (req, res) => res.json({ message: "Hello from Docker v3 🎉" }));
+router.get("/", (req, res) => res.json({ message: "Hello from Docker v4 🎉" }));
 
 router.get("/health", (req, res) => {
   //  throw new Error("Internal Server Error");
