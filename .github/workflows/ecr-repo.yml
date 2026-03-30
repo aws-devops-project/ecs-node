@@ -1,11 +1,11 @@
 name: Build and Push to ECR
 
-# on:
-#   push:
-#     branches:
-#       - main
 on:
-  workflow_dispatch: {}
+  push:
+    branches:
+      - main
+# on:
+#   workflow_dispatch: {}
   
 permissions:
   id-token: write   # REQUIRED for OIDC
@@ -35,11 +35,11 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t $ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:${{ github.sha }} .
+          docker build -t $ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:latest .
 
       - name: Push Docker image
         run: |
-          docker push $ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:${{ github.sha }}
+          docker push $ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:latest
 
 
           
